@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/HTML">
+		<title> Database Forms </title>
+		<link rel="stylesheet" type="text/css" href="websiteCSS.css">
+	</head>
+
+<body>
+<div id = "header">
+
+<center> DATABASE WEBSITE </center>
+
+</div>
+
+<br>
+<br>
+
+<h1> Form 1: </h1>
+	<h2> Adding a new customer entry </h2>
+<div class = "form">
+	<!-- Action 1: Adding a new customer -->
+	<form action ="addCust" method= "post"><br>
+	Customer ID   <input type = "text" name = "CustomerID"><br>
+	Customer Name <input type = "text" name = "Name"><br>
+	Email         <input type = "text" name = "Email"><br>
+	
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+	</form>
+	{{msg1}} <br>
+	{{error1}}
+</div>
+
+<br>
+
+<h1> Form 2: </h1>
+	<h2> Creating a new Support ticket </h2>
+<div class = "form">
+	<!-- Action 2: creating a new support ticket -->
+    <form action ="addTicket" method= "post"><br>
+	Ticket ID     <input type = "text" name = "TicketID"><br>
+	Problem       <input type = "text" name = "Problem"><br>
+	Status (Open/Closed) <input type = "text" name = "Status"><br>
+	Priority (1-3)<input type = "text" name = "Priority"><br>
+	Customer ID   <input type = "text" name = "CustomerID"><br>
+	Product ID    <input type = "text" name = "ProductID"><br>
+	
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+	</form>
+	{{msg2}} <br>
+	{{error2}}
+</div>
+
+<br>
+
+<h1> Form 3: </h1>
+	<h2> Adding an update to a ticket </h2>
+<div class = "form">
+	<!-- Action 3: Adding a new update ticket -->
+	<form action ="addUpdateTicket" method= "post"><br>
+	Update ID          <input type = "text" name = "TicketUpdateID"><br>
+	Message            <input type = "text" name = "Message"><br>
+	Update Time        <input type = "text" name = "UpdateTime"><br>
+	Ticket ID          <input type = "text" name = "TicketID"><br>
+	Staff ID		   <input type = "text" name = "StaffID"><br>
+	<br>
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+	</form>
+	{{msg3}} <br>
+	{{error3}}
+</div>
+
+<br>
+
+<h1> Form 4: </h1>
+	<h2> Listing Outstanding tickets </h2>
+<div class = "form2">
+	<!-- Action 4: Listing any outstanding tickets -->
+	<table>
+	<tr>
+		<th>TicketID</th> <th>Problem</th> <th>Priority</th> <th>CustomerID</th> <th>ProductID</th ><th>Most Recent Update</th>
+	</tr>
+	{% for row in rows1%}
+		<tr>
+		{% for item in row%}
+			<td>
+			{{item}}
+			</td>
+		{% end for %}
+		</tr>
+	{% end for %}
+	</tr>
+	</table>
+	
+	{{msg4}}
+	{{error4}}
+</div>
+
+<br>
+
+<h1> Form 5: </h1>
+	<h2> Updating a ticket to close it </h2>
+<div class = "form">
+	<!-- Action 5: Updating a ticket to close it -->
+	<form action ="updateTicket" method= "post"><br>
+	Ticket ID   <input type = "text" name = "TicketID"><br>
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+	</form>
+</div>
+
+<br>
+
+<h1> Form 6: </h1>
+	<h2> Details on a specific ticket </h2>	
+<div class = "form">
+<!-- Action 6: Give details on a given support ticket -->
+<form action ="details" method= "get"><br>
+	Ticket ID   <input type = "text" name = "TicketID"><br>
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+</div>
+
+<br>
+
+<h1> Form 7: </h1>
+	<h2> Report on all closed tickets </h2>
+	
+<div id = "form3">
+	<!-- Action 7: Listing any outstanding tickets -->
+	<table>
+	<tr>
+		<th>TicketID</th> <th>Problem</th> <th>Priority</th> <th>CustomerID</th> <th>ProductID</th ><th>No. Of Updates</th><th>Time Of 1st Update</th><th>Final Update</th>
+	</tr>
+	{% for row in rows%}
+		<tr>
+		{% for item in row%}
+			<td>
+			{{item}}
+			</td>
+		{% end for %}
+		</tr>
+	{% end for %}
+	</tr>
+	
+	</table>
+	
+	
+</div>
+
+<br>
+
+<h1> Form 8: </h1>
+	<h2> Deleting a customer </h2>
+<div class = "form">
+	<!-- Action 8: Deletion of a customer -->
+	<form action ="delete" method= "post"><br>
+	Customer ID   <input type = "text" name = "CustomerID"><br>
+	<input type = "submit" value = "Submit information"/>
+	<input type = "reset">
+	
+
+</body>
+</html>
